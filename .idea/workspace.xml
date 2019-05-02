@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fd13fca6-6877-437a-84b5-e57fec0aaa15" name="Default" comment="" />
+    <list default="true" id="fd13fca6-6877-437a-84b5-e57fec0aaa15" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/FractionalCascading.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,11 +36,6 @@
             <path>
               <item name="FractionalCascading" type="b2602c69:ProjectViewProjectNode" />
               <item name="FractionalCascading" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FractionalCascading" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FractionalCascading" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
