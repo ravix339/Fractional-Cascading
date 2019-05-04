@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="../static/css/components/navbar.css" />
     <link rel="stylesheet" href="../static/css/fractionalcascading.css" />
     <script src="../static/js/lib/jquery.min.js"></script>
-    <script src="../static/js/fractionalcascading.js"></script>
+    <script src="../static/js/demo/handleSelect.js"></script>
+    <script src="../static/js/demo/fractionalcascading.js"></script>
   </head>
   <body>
       <!-- Navbar -->
@@ -39,13 +40,13 @@
             >
               <ul class="nav navbar-nav navbar-right">
                 <li>
-                  <a href="#"
+                  <a href="FractionalCascading.html"
                     ><span class="nav-click"
                       >Description</i></span
                   ></a>
                 </li>
                 <li>
-                  <a href="Demo.html"
+                  <a href="#"
                     ><span class="nav-click"
                       >Demo</i></span
                   ></a>
@@ -55,6 +56,34 @@
             <!-- /.navbar-collapse -->
           </div>
           <!-- /.container-fluid -->
-        </nav>
+      </nav>
+
+    <!-- Select Elements -->
+    <div class="container" id="select-container">
+        <div class="row">
+          <div class="col-xs-1"></div>
+          <div class="col-xs-5">
+            <div>
+              <select class="form-control" id="num-lists-select">
+                <option value="" disabled selected>Select Number of Lists</option>
+                <option disabled>──────────</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-5">
+            <div>
+              <select class="form-control" id="num-elements-select">
+                <option value="" disabled selected>Select Number of Elements Per List</option>
+                <option disabled>────────────────</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-xs-1"></div>
+        </div>
+    </div>
+
+    <!-- Input Lists - Handled by JS -->
+    <div class="container" id="input-lists-container">
+    </div>
   </body>
 </html>

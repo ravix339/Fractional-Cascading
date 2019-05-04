@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #57068c;
+  border-color: #57068c;
+  border-radius: 0;
+}
+
+.navbar-default {
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+
+.nav-click {
+  color: #777 !important;
+}
+
+.nav-click:hover {
+  color: white !important;
+}
+
+.navbar-nav > li > a {
+  padding-top: 3rem;
+}
+
+li a:focus,
+li a:active {
+  outline: none !important;
+  box-shadow: none;
+}
+
+#navbar-title {
+  color: white;
+}

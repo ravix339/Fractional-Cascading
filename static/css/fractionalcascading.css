@@ -1,0 +1,21 @@
+#input-lists-container input[type="number"] {
+  width: 3em;
+  height: 3em;
+}
+
+.list-label {
+  font-weight: bold;
+}
+
+.list-element {
+  padding-right: 0;
+  padding-right: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  border: 1px solid black;
+  text-align: center;
+}
+
+.list-row {
+  margin-top: 3em;
+}
