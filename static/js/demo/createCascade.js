@@ -40,7 +40,9 @@ drawCascade = list_of_FC_Lists => {
   let linesToDraw = [];
   for (let listNum = list_of_FC_Lists.length - 1; listNum >= 0; --listNum) {
     fcListsContainer.append(
-      `<div class="row list-row" id="fc-list-index-${listNum}"></div>`
+      `<div class="row list-row" id="fc-list-index-${listNum}" style="top:${6 *
+        (list_of_FC_Lists.length - 1 - listNum) +
+        8}em"></div>`
     );
     const currentList = $(`#fc-list-index-${listNum}`);
     currentList.append(`<span class="list-label">List ${listNum + 1}: </span>`);
@@ -59,7 +61,8 @@ drawCascade = list_of_FC_Lists => {
       if (!original) {
         linesToDraw.push([
           `#fc-list-${listNum}-element-${elementNum}`,
-          `#fc-list-${listNum - 1}-element-${indexBelow}`
+          `#fc-list-${listNum - 1}-element-${indexBelow}`,
+          color
         ]);
       }
     }

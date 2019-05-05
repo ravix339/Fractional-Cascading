@@ -41,7 +41,9 @@ createInputLists = (numberOfLists, numberOfElements) => {
   const inputListsContainer = $("#input-lists-container");
   for (let listNum = 0; listNum <= numberOfLists - 1; ++listNum) {
     inputListsContainer.append(
-      `<div class="row list-row" id="list-index-${listNum}"></div>`
+      `<div class="row list-row" id="list-index-${listNum}" style="top:${6 *
+        listNum +
+        8}em"></div>`
     );
     const currentList = $(`#list-index-${listNum}`);
     currentList.append(`<span class="list-label">List ${listNum + 1}: </span>`);

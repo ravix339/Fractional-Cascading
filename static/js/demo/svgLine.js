@@ -1,21 +1,41 @@
 drawLines = linesToDraw => {
   console.log(linesToDraw);
-  id_one = linesToDraw[0][0];
-  id_two = linesToDraw[0][1];
+  for (let index = 0; index < linesToDraw.length; ++index) {
+    const element = linesToDraw[index];
+    const id_one = element[0];
+    const id_two = element[1];
+    const color = element[2];
+    const containerDivTop = $(
+      "#fractional-cascade-lists-container"
+    )[0].getBoundingClientRect().top;
+    const containerDivLeft = $(
+      "#fractional-cascade-lists-container"
+    )[0].getBoundingClientRect().lect;
 
-  //get coordinates of first element
-  let firstElement = $(id_one);
-  let offsetOne = firstElement.offset();
-  let height = firstElement.height();
-  let startLeft = offsetOne.left;
-  let startBottom = offsetOne.top + height;
-  console.log(startLeft, startBottom);
+    //get coordinates of first element
+    const firstElement = $(id_one);
+    const rectOne = firstElement[0].getBoundingClientRect();
+    const x1 = (rectOne.right + rectOne.left) / 2;
+    const y1 = rectOne.bottom;
 
-  //get coordinates of second element
-  let secondElement = $(id_two);
-  let offsetTwo = firstElement.offset();
-  let width = firstElement.width();
-  let endRight = offsetTwo.left + width;
-  let endTop = offsetTwo.top;
-  console.log(endRight, endTop);
+    //get coordinates of second element
+    const secondElement = $(id_two);
+    const rectTwo = secondElement[0].getBoundingClientRect();
+    const x2 = (rectTwo.right + rectTwo.left) / 2;
+    const y2 = rectTwo.top;
+    console.log(rectOne.top, rectOne.left, rectOne.bottom, rectOne.right);
+    console.log(rectTwo.top, rectTwo.left, rectTwo.bottom, rectTwo.right);
+
+    let newLine = document.createElementNS(
+      "http://www.w3.org/2000/svg",
+      "line"
+    );
+    newLine.setAttribute("id", "line2");
+    newLine.setAttribute("x1", x1);
+    newLine.setAttribute("y1", y1 - containerDivTop);
+    newLine.setAttribute("x2", x2);
+    newLine.setAttribute("y2", y2 - containerDivTop);
+    newLine.setAttribute("stroke", color);
+    $("svg").append(newLine);
+  }
 };
