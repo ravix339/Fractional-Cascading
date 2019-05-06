@@ -14,8 +14,8 @@ getLists = () => {
 };
 
 createCascade = (listOfLists = null) => {
-  if (listOfLists == null) {
-    let listOfLists = getLists();
+  if (listOfLists === null) {
+    listOfLists = getLists();
   }
   $("#input-lists-container").empty();
   for (let i = 0; i < listOfLists.length; ++i) {
