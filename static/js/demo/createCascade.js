@@ -1,8 +1,3 @@
-$(document).ready(function() {
-  // $("#num-lists-select").on("change", handleNumListSelectChange);
-  // $("#num-elements-select").on("change", handleNumElementsSelectChange);
-});
-
 getLists = () => {
   let inputListOfLists = [];
   const lists = $("#input-lists-container .list-row");
@@ -18,24 +13,25 @@ getLists = () => {
   return inputListOfLists;
 };
 
-createCascade = () => {
-  let listOfLists = getLists();
+createCascade = (listOfLists = null) => {
+  if (listOfLists == null) {
+    let listOfLists = getLists();
+  }
   $("#input-lists-container").empty();
-  for (let i = 0; i < listOfLists.length; i++) {
+  for (let i = 0; i < listOfLists.length; ++i) {
     let list = listOfLists[i];
     listOfLists[i] = new FCList(list);
   }
-  for (let j = 0; j < listOfLists.length - 1; j++) {
+  for (let j = 0; j < listOfLists.length - 1; ++j) {
     let bottomList = listOfLists[j];
     let topList = listOfLists[j + 1];
     bottomList.cascadeUp(topList);
   }
-
   drawCascade(listOfLists);
 };
 
 drawCascade = list_of_FC_Lists => {
-  const colors = ["blue", "purple", "green", "red", "orange"];
+  const colors = ["blue", "fuchsia", "green", "red", "orange"];
   const fcListsContainer = $("#fractional-cascade-lists-container");
   let linesToDraw = [];
   for (let listNum = list_of_FC_Lists.length - 1; listNum >= 0; --listNum) {

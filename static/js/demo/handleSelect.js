@@ -2,12 +2,13 @@ $(document).ready(function() {
   loadSelectValues();
   $("#num-lists-select").on("change", handleNumListSelectChange);
   $("#num-elements-select").on("change", handleNumElementsSelectChange);
+  $("#randomListButton").on("click", generateRandomLists);
   $("body").on("change", ".list-element", checkIfListsFullAndStartDemo);
 });
 
 loadSelectValues = () => {
   const numListsSelectElement = $("#num-lists-select");
-  for (let num = 1; num <= 5; ++num) {
+  for (let num = 2; num <= 10; ++num) {
     let option = new Option(num, num);
     $(option).html(num);
     numListsSelectElement.append(option);
@@ -24,7 +25,9 @@ handleNumListSelectChange = () => {
   const numElementsSelectElement = $("#num-elements-select");
   $("#input-lists-container").empty();
   $("#fractional-cascade-lists-container").empty();
+  $("svg").empty();
   numElementsSelectElement.val("");
+  $("#randomListButton").css("visibility", "hidden");
 };
 
 handleNumElementsSelectChange = () => {
@@ -32,7 +35,9 @@ handleNumElementsSelectChange = () => {
   const numberOfElements = $("#num-elements-select option:selected").val();
   $("#input-lists-container").empty();
   $("#fractional-cascade-lists-container").empty();
+  $("svg").empty();
   if (numberOfLists !== "" && numberOfElements !== "") {
+    $("#randomListButton").css("visibility", "visible");
     createInputLists(numberOfLists, numberOfElements);
   }
 };
@@ -74,4 +79,23 @@ checkIfListsFullAndStartDemo = () => {
   if (listsFull === true) {
     createCascade();
   }
+};
+
+generateRandomLists = () => {
+  $("#input-lists-container").empty();
+  $("#fractional-cascade-lists-container").empty();
+  $("svg").empty();
+  const numberOfLists = $("#num-lists-select option:selected").val();
+  const numberOfElements = $("#num-elements-select option:selected").val();
+  let listOfLists = [];
+  for (let i = 0; i < numberOfLists; ++i) {
+    let randomList = [];
+    for (let j = 0; j < numberOfElements; ++j) {
+      let plusOrMinus = Math.random() < 0.5 ? -1 : 1;
+      let randomNumber = Math.floor(Math.random() * 99) * plusOrMinus;
+      randomList.push(randomNumber);
+    }
+    listOfLists.push(randomList);
+  }
+  createCascade(listOfLists);
 };
