@@ -173,9 +173,22 @@ function Search() {
       } else if (cursor - 1 >= 0 && list[i].values[cursor - 1].value == x && list[i].values[cursor-1].original) {
         this.hits.push(new indexColorTuple(i, cursor - 1, this.colors[i + 2]));
         this.results.push(true);
-      } else if (cursor == list[i].values.length-2 && list[i].values[cursor+1]==x) {
-        this.hits.push(new indexColorTuple(i, cursor + 1, this.colors[i + 2]));
-        this.results.push(true);
+      } else if (cursor == list[i].values.length-2) {
+        if (list[i].values[cursor+1].value==x){
+          if (list[i].values[cursor+1].original) {
+            this.hits.push(new indexColorTuple(i, cursor + 1, this.colors[i + 2]));
+            this.results.push(true);
+          } else {
+            this.results.push(false);
+            cursor += 1
+          }
+        }
+        else if (list[i].values[cursor+1].value > x && list[i].values[cursor].value < x) {
+          this.results.push(false);
+          cursor += 1
+        } else {
+          this.results.push(false);
+        }
       } else {
         this.results.push(false);
       }
