@@ -1,8 +1,5 @@
 $(document).ready(function() {
-  // console.log("ready");
-  //let x = new FCList([1,3,5])
-  //let y = new FCList([1,2,3])
-  //let z = new FCList([4,5,6])
+  console.log("ready");
   // let x = new FCList([
   //   3,
   //   16,
@@ -13,7 +10,7 @@ $(document).ready(function() {
   //   53,
   //   60,
   //   61,
-  //   81,
+  //   89,
   //   96,
   //   161,
   //   172,
@@ -46,7 +43,7 @@ $(document).ready(function() {
   //   24,
   //   25,
   //   77,
-  //   88,
+  //   89,
   //   100,
   //   121,
   //   157,
@@ -128,6 +125,9 @@ function FCList(listOfValues) {
         lastpromoted = i;
       }
     }
+    for (j = lastpromoted + 1; j < FCListAbove.values.length; j++) {
+      FCListAbove.values[j].nextPromoted = lastpromoted;
+    }
     console.log(FCListAbove);
   };
 }
@@ -159,6 +159,7 @@ function Search() {
     } else {
       this.results.push(false);
     }
+    console.log(result)
     var binSearchNode = this.hits[this.hits.length - 1].index;
     var cursor = binSearchNode;
 
@@ -168,24 +169,20 @@ function Search() {
       }
       cursor = list[i - 1].values[cursor].indexBelow;
 
-      if (
-        list[i].values[cursor].value === x &&
-        list[i].values[cursor].original
-      ) {
+      if (list[i].values[cursor].value === x && list[i].values[cursor].original) {
         this.hits.push(new indexColorTuple(i, cursor, this.colors[i + 2]));
         this.results.push(true);
-      } else if (cursor - 1 >= 0 && list[i].values[cursor - 1].value === x) {
-        if (list[i].values[cursor - 1].original) {
-          this.hits.push(
-            new indexColorTuple(i, cursor - 1, this.colors[i + 2])
-          );
-          this.results.push(true);
-        } else {
-          cursor -= 1;
-          this.results.push(false);
-        }
+      } else if (cursor - 1 >= 0 && list[i].values[cursor - 1].value == x && list[i].values[cursor-1].original) {
+        this.hits.push(new indexColorTuple(i, cursor - 1, this.colors[i + 2]));
+        this.results.push(true);
+      } else if (cursor == list[i].values.length-2 && list[i].values[cursor+1]==x) {
+        this.hits.push(new indexColorTuple(i, cursor + 1, this.colors[i + 2]));
+        this.results.push(true);
       } else {
         this.results.push(false);
+      }
+      if (list[i].values[cursor-1].value >= x){
+        cursor -= 1
       }
     }
     return null;
@@ -200,14 +197,14 @@ function Search() {
       console.log(mid, arr[mid].value);
       var hit = new indexColorTuple(0, mid, this.colors[0]);
       // If element is present at mid, return True
-      if (arr[mid].value === x) {
+      if (arr[mid].value == x) {
         if (arr[mid].original) {
           hit.color = this.colors[1];
           this.hits.push(hit);
           return true;
         }
         for (i = 0; i < arr.length; i++) {
-          if (arr[i].value === x) {
+          if (arr[i].value == x) {
             if (!arr[i].original) {
               this.hits.push(new indexColorTuple(0, i, this.colors[0]));
             } else {
