@@ -1,5 +1,4 @@
 drawLines = linesToDraw => {
-  console.log(linesToDraw);
   for (let index = 0; index < linesToDraw.length; ++index) {
     const element = linesToDraw[index];
     const id_one = element[0];

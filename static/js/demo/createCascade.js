@@ -29,6 +29,7 @@ createCascade = (listOfLists = null) => {
     let topList = listOfLists[j + 1];
     bottomList.cascadeUp(topList);
   }
+  sessionStorage.setItem("listOfLists", JSON.stringify(listOfLists));
   drawCascade(listOfLists);
 };
 

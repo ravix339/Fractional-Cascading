@@ -1,87 +1,86 @@
 $(document).ready(function() {
-  console.log("ready");
+  // console.log("ready");
   //let x = new FCList([1,3,5])
   //let y = new FCList([1,2,3])
   //let z = new FCList([4,5,6])
-  let x = new FCList([
-    3,
-    16,
-    17,
-    30,
-    35,
-    37,
-    53,
-    60,
-    61,
-    81,
-    96,
-    161,
-    172,
-    199,
-    214
-  ]);
-  let y = new FCList([
-    1,
-    2,
-    6,
-    10,
-    12,
-    13,
-    14,
-    26,
-    33,
-    90,
-    99,
-    102,
-    140,
-    150,
-    160
-  ]);
-  let z = new FCList([
-    5,
-    7,
-    11,
-    15,
-    23,
-    24,
-    25,
-    77,
-    88,
-    100,
-    121,
-    157,
-    180,
-    213,
-    216
-  ]);
-  let r = new FCList([
-    4,
-    8,
-    16,
-    32,
-    64,
-    76,
-    83,
-    89,
-    95,
-    101,
-    112,
-    113,
-    156,
-    200,
-    201
-  ]);
-  r.cascadeUp(z);
-  z.cascadeUp(y);
-  y.cascadeUp(x);
-
-  console.log(x.values.length);
-  let idk = new Search();
-  let a = [x, y, z, r];
-  console.log(a);
-  idk.driver(a, 89);
-  console.log(idk.results);
-  console.log(idk.hits);
+  // let x = new FCList([
+  //   3,
+  //   16,
+  //   17,
+  //   30,
+  //   35,
+  //   37,
+  //   53,
+  //   60,
+  //   61,
+  //   81,
+  //   96,
+  //   161,
+  //   172,
+  //   199,
+  //   214
+  // ]);
+  // let y = new FCList([
+  //   1,
+  //   2,
+  //   6,
+  //   10,
+  //   12,
+  //   13,
+  //   14,
+  //   26,
+  //   33,
+  //   90,
+  //   99,
+  //   102,
+  //   140,
+  //   150,
+  //   160
+  // ]);
+  // let z = new FCList([
+  //   5,
+  //   7,
+  //   11,
+  //   15,
+  //   23,
+  //   24,
+  //   25,
+  //   77,
+  //   88,
+  //   100,
+  //   121,
+  //   157,
+  //   180,
+  //   213,
+  //   216
+  // ]);
+  // let r = new FCList([
+  //   4,
+  //   8,
+  //   16,
+  //   32,
+  //   64,
+  //   76,
+  //   83,
+  //   89,
+  //   95,
+  //   101,
+  //   112,
+  //   113,
+  //   156,
+  //   200,
+  //   201
+  // ]);
+  // r.cascadeUp(z);
+  // z.cascadeUp(y);
+  // y.cascadeUp(x);
+  // console.log(x.values.length);
+  // let idk = new Search();
+  // let a = [x, y, z, r];
+  // console.log(a);
+  // idk.driver(a, 89);
+  // console.log(idk.results);
+  // console.log(idk.hits);
 });
 
 function FCNode(value, original = true, indexBelow = null) {
