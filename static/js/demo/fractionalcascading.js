@@ -133,7 +133,7 @@ function FCList(listOfValues) {
 }
 
 function indexColorTuple(list, index, color) {
-  (this.index = index), (this.color = color);
+  (this.list=list),(this.index = index), (this.color = color);
 }
 
 function Search() {
@@ -159,7 +159,6 @@ function Search() {
     } else {
       this.results.push(false);
     }
-    console.log(result)
     var binSearchNode = this.hits[this.hits.length - 1].index;
     var cursor = binSearchNode;
 
@@ -168,8 +167,7 @@ function Search() {
         cursor = list[i - 1].values[cursor].nextPromoted;
       }
       cursor = list[i - 1].values[cursor].indexBelow;
-
-      if (list[i].values[cursor].value === x && list[i].values[cursor].original) {
+      if (list[i].values[cursor].value == x && list[i].values[cursor].original) {
         this.hits.push(new indexColorTuple(i, cursor, this.colors[i + 2]));
         this.results.push(true);
       } else if (cursor - 1 >= 0 && list[i].values[cursor - 1].value == x && list[i].values[cursor-1].original) {
@@ -194,7 +192,6 @@ function Search() {
     while (start <= end) {
       // Find the mid index
       let mid = Math.floor((start + end) / 2);
-      console.log(mid, arr[mid].value);
       var hit = new indexColorTuple(0, mid, this.colors[0]);
       // If element is present at mid, return True
       if (arr[mid].value == x) {
