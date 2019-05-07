@@ -10,9 +10,10 @@ handleSearchButtonClick = () => {
 startSearch = searchNumber => {
   let listOfLists = sessionStorage.getItem("listOfLists");
   listOfLists = JSON.parse(listOfLists).reverse();
-  console.log(listOfLists);
   let searchData = new Search();
-  searchData.driver(listOfLists, searchNumber);
-  console.log(searchData.results);
-  console.log(searchData.hits);
+  searchData.driver(listOfLists, Number(searchNumber));
+  const { hits, results } = searchData;
+  for (let index = 0; index < hits.length; ++index) {
+    const hit = hits[index];
+  }
 };
