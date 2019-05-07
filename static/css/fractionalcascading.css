@@ -12,6 +12,7 @@
   width: 3em;
   height: 3em;
   font-weight: bold;
+  transition: all 1s;
 }
 
 .list-row {
@@ -30,4 +31,8 @@
 #startSearchButton {
   width: 30%;
   margin-left: 1%;
+}
+
+.animate {
+  transform: scale(1.5);
 }

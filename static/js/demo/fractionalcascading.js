@@ -1,5 +1,4 @@
 $(document).ready(function() {
-  console.log("ready");
   // let x = new FCList([
   //   3,
   //   16,
@@ -128,12 +127,11 @@ function FCList(listOfValues) {
     for (j = lastpromoted + 1; j < FCListAbove.values.length; j++) {
       FCListAbove.values[j].nextPromoted = lastpromoted;
     }
-    console.log(FCListAbove);
   };
 }
 
 function indexColorTuple(list, index, color) {
-  (this.list=list),(this.index = index), (this.color = color);
+  (this.list = list), (this.index = index), (this.color = color);
 }
 
 function Search() {
@@ -167,20 +165,30 @@ function Search() {
         cursor = list[i - 1].values[cursor].nextPromoted;
       }
       cursor = list[i - 1].values[cursor].indexBelow;
-      if (list[i].values[cursor].value == x && list[i].values[cursor].original) {
+      if (
+        list[i].values[cursor].value == x &&
+        list[i].values[cursor].original
+      ) {
         this.hits.push(new indexColorTuple(i, cursor, this.colors[i + 2]));
         this.results.push(true);
-      } else if (cursor - 1 >= 0 && list[i].values[cursor - 1].value == x && list[i].values[cursor-1].original) {
+      } else if (
+        cursor - 1 >= 0 &&
+        list[i].values[cursor - 1].value == x &&
+        list[i].values[cursor - 1].original
+      ) {
         this.hits.push(new indexColorTuple(i, cursor - 1, this.colors[i + 2]));
         this.results.push(true);
-      } else if (cursor == list[i].values.length-2 && list[i].values[cursor+1]==x) {
+      } else if (
+        cursor == list[i].values.length - 2 &&
+        list[i].values[cursor + 1] == x
+      ) {
         this.hits.push(new indexColorTuple(i, cursor + 1, this.colors[i + 2]));
         this.results.push(true);
       } else {
         this.results.push(false);
       }
-      if (list[i].values[cursor-1].value >= x){
-        cursor -= 1
+      if (list[i].values[cursor - 1].value >= x) {
+        cursor -= 1;
       }
     }
     return null;
