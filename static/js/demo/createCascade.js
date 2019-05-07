@@ -14,6 +14,8 @@ getLists = () => {
 };
 
 createCascade = (listOfLists = null) => {
+  hideSelectsAndRandomButton();
+  showSearchInputAndButtons();
   if (listOfLists === null) {
     listOfLists = getLists();
   }
@@ -31,6 +33,9 @@ createCascade = (listOfLists = null) => {
 };
 
 drawCascade = list_of_FC_Lists => {
+  document.getElementById("svgContainer").style.height = `${6 *
+    (list_of_FC_Lists.length - 1) +
+    8}em`;
   const colors = ["blue", "fuchsia", "green", "red", "orange"];
   const fcListsContainer = $("#fractional-cascade-lists-container");
   let linesToDraw = [];

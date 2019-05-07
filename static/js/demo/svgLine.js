@@ -23,8 +23,6 @@ drawLines = linesToDraw => {
     const rectTwo = secondElement[0].getBoundingClientRect();
     const x2 = (rectTwo.right + rectTwo.left) / 2;
     const y2 = rectTwo.top;
-    console.log(rectOne.top, rectOne.left, rectOne.bottom, rectOne.right);
-    console.log(rectTwo.top, rectTwo.left, rectTwo.bottom, rectTwo.right);
 
     let newLine = document.createElementNS(
       "http://www.w3.org/2000/svg",

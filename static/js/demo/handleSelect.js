@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 loadSelectValues = () => {
   const numListsSelectElement = $("#num-lists-select");
-  for (let num = 2; num <= 10; ++num) {
+  for (let num = 2; num <= 15; ++num) {
     let option = new Option(num, num);
     $(option).html(num);
     numListsSelectElement.append(option);
@@ -27,7 +27,7 @@ handleNumListSelectChange = () => {
   $("#fractional-cascade-lists-container").empty();
   $("svg").empty();
   numElementsSelectElement.val("");
-  $("#randomListButton").css("visibility", "hidden");
+  $("#randomListButton").hide();
 };
 
 handleNumElementsSelectChange = () => {
@@ -37,7 +37,7 @@ handleNumElementsSelectChange = () => {
   $("#fractional-cascade-lists-container").empty();
   $("svg").empty();
   if (numberOfLists !== "" && numberOfElements !== "") {
-    $("#randomListButton").css("visibility", "visible");
+    $("#randomListButton").show();
     createInputLists(numberOfLists, numberOfElements);
   }
 };

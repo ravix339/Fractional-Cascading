@@ -12,6 +12,7 @@
     <script src="../static/js/lib/jquery.html-svg-connect.js"></script>
     <script src="../static/js/demo/handleSelect.js"></script>
     <script src="../static/js/demo/svgLine.js"></script>
+    <script src="../static/js/demo/hideAndShow.js"></script>
     <script src="../static/js/demo/createCascade.js"></script>
     <script src="../static/js/demo/fractionalcascading.js"></script>
   </head>
@@ -81,7 +82,25 @@
             </div>
           </div>
           <div class="col-xs-2">
-            <button id="randomListButton" style="visibility: hidden" type="button" class="btn btn-primary">Generate Random Lists</button>
+            <button id="randomListButton" style="display: none" type="button" class="btn btn-primary">Generate Random Lists</button>
+          </div>
+        </div>
+    </div>
+
+    <!-- Search Elements and Reset-->
+    <div class="container" id="search-container">
+        <div class="row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-4">
+            <div class="input-group mb-3" id="searchNumDiv">
+              <input id="searchNumber" type="number" class="form-control" style="display: none" placeholder="Enter Search Number" aria-label="Username" aria-describedby="basic-addon1">
+              <button id="startSearchButton" style="display: none" type="button" class="btn btn-primary">Start Search</button>
+            </div>
+          </div>
+          <div class="col-xs-2"></div>
+          <div class="col-xs-2"></div>
+          <div class="col-xs-1">
+              <button id="resetButton" style="display: none" type="button" class="btn btn-danger">Reset</button>
           </div>
         </div>
     </div>
@@ -93,6 +112,6 @@
     <!-- Fractional Cascasde Lists - Handled by JS -->
     <div class="container" id="fractional-cascade-lists-container">
     </div>
-    <svg id="svgContainer" height="1000em" width="1000em"></svg>
+    <svg id="svgContainer" width="100vw"></svg>
   </body>
 </html>

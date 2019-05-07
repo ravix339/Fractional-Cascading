@@ -18,3 +18,16 @@
   margin-top: 3em;
   position: absolute;
 }
+
+#searchNumDiv {
+  width: 100%;
+}
+
+#searchNumber {
+  width: 55%;
+}
+
+#startSearchButton {
+  width: 30%;
+  margin-left: 1%;
+}
