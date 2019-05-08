@@ -130,8 +130,8 @@ function FCList(listOfValues) {
   };
 }
 
-function hitTuple(list, index) {
-  (this.list = list), (this.index = index);
+function hitTuple(list, index, found=false) {
+  (this.list = list), (this.index = index), (this.found=found);
 }
 
 function Search() {
@@ -148,42 +148,55 @@ function Search() {
     }
 
     var binSearchNode = this.hits[this.hits.length - 1].index;
-    var cursor = binSearchNode;
+    var cursor = binSearchNode
 
     for (i = 1; i < list.length; i++) {
-      if (list[i - 1].values[cursor].original) {
-        cursor = list[i - 1].values[cursor].nextPromoted;
-        this.hits.push(new hitTuple(i-1, cursor));
+      if (list[i-1].values[cursor].original) {
+        cursor = list[i-1].values[cursor].nextPromoted;
+        this.hits.push(new hitTuple(i-1,cursor, false))
       }
-      cursor = list[i - 1].values[cursor].indexBelow;
-      this.hits.push(new hitTuple(i, cursor));
+      cursor = list[i-1].values[cursor].indexBelow
+      
+      listHits = []
+      listHits.push(new hitTuple(i, cursor, false))
+      listHits.push(new hitTuple(i, cursor-1, false))
+      if (cursor == list[i].values.length-2){
+        listHits.push(new hitTuple(i, cursor+1, false))
+      }
+
       if (list[i].values[cursor].value == x && list[i].values[cursor].original) {
-        this.results.push(true);
-      } else if (cursor == list[i].values.length - 2) {
-        this.hits.push(new hitTuple(i, cursor + 1));
-        if (list[i].values[cursor+1].value == x) {
-          if (list[i].values[cursor+1].original) {
-            this.results.push(true)
-          } else{
-            this.results.push(false)
-            cursor += 1
-          }
-        } else if (
-          list[i].values[cursor + 1].value > x &&
-          list[i].values[cursor].value < x
-        ) {
-          this.results.push(false);
-          cursor += 1;
+        this.results.push(true)
+        listHits[0].found = true
+        while(listHits.length != 1) {
+          listHits.pop()
         }
-      } else if (cursor - 1 >= 0) {
-        this.hits.push(new hitTuple(i, cursor-1))
-        if (list[i].values[cursor - 1].value == x && list[i].values[cursor - 1].original) {
-          this.results.push(true);
+      } else if (cursor >= 1 && list[i].values[cursor-1].value >= x) {
+        while(listHits.length != 2) {
+          listHits.pop()
+        }
+        if(list[i].values[cursor-1].original && list[i].values[cursor-1].value == x) {
+          this.results.push(true)
+          listHits[1].found = true
+        } else{
+          cursor -= 1
+          this.results.push(false)
+        }
+      } else if (cursor == list[i].values.length -2 && list[i].values[cursor].value < x) {
+        if (list[i].values[cursor+1].value == x && list[i].values[cursor+1].original) {
+          this.results.push(true)
+          listHits[2].found = true
+        } else {
+          this.results.push(false)
+          cursor += 1
         }
       } else {
         this.results.push(false)
       }
+      listHits.forEach(element => {
+        this.hits.push(element)
+      })
     }
+
     return null;
   };
 
