@@ -40,6 +40,7 @@ drawCascade = list_of_FC_Lists => {
   const colors = ["blue", "fuchsia", "green", "red", "orange"];
   const fcListsContainer = $("#fractional-cascade-lists-container");
   let linesToDraw = [];
+  let arcsToDraw = [];
   for (let listNum = list_of_FC_Lists.length - 1; listNum >= 0; --listNum) {
     fcListsContainer.append(
       `<div class="row list-row" id="fc-list-index-${listNum}" style="top:${6 *
@@ -67,7 +68,15 @@ drawCascade = list_of_FC_Lists => {
           color
         ]);
       }
+      if (nextPromoted != null) {
+        arcsToDraw.push([
+          `#fc-list-${listNum}-element-${elementNum}`,
+          `#fc-list-${listNum}-element-${nextPromoted}`
+        ]);
+      }
     }
   }
   drawLines(linesToDraw);
+  drawArcs(arcsToDraw);
+  console.log(arcsToDraw);
 };
