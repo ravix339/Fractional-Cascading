@@ -23,14 +23,16 @@ startSearch = searchNumber => {
   console.log(results);
   console.log(hits);
 
-  //diable and start search button
+  //disable and start search button
   $("#startSearchButton").prop("disabled", true);
   $("#searchNumber").prop("disabled", true);
   $("#resetButton").prop("disabled", true);
+  $("#newRandomListBtn").prop("disabled", true);
   setTimeout(() => {
     $("#startSearchButton").prop("disabled", false);
     $("#searchNumber").prop("disabled", false);
     $("#resetButton").prop("disabled", false);
+    $("#newRandomListBtn").prop("disabled", false);
   }, 1500 * hits.length);
 
   //start search amimation using hits data

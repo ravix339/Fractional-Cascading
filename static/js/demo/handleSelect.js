@@ -3,6 +3,7 @@ $(document).ready(function() {
   $("#num-lists-select").on("change", handleNumListSelectChange);
   $("#num-elements-select").on("change", handleNumElementsSelectChange);
   $("#randomListButton").on("click", generateRandomLists);
+  $("#newRandomListBtn").on("click", generateRandomLists);
   $("body").on("change", ".list-element", checkIfListsFullAndStartDemo);
 });
 
