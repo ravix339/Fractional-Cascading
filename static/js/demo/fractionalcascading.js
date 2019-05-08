@@ -141,13 +141,13 @@ function Search() {
     var list = listOfFCLists;
     var x = query;
     var result = this.binarySearch(list[0].values, x);
+    var binSearchNode = this.hits[this.hits.length - 1].index;
     if (result) {
       this.results.push(true);
     } else {
+      binSearchNode = Math.min(binSearchNode+1, list[0].values.length)
       this.results.push(false);
     }
-
-    var binSearchNode = this.hits[this.hits.length - 1].index;
     var cursor = binSearchNode
 
     for (i = 1; i < list.length; i++) {
@@ -211,15 +211,17 @@ function Search() {
       // If element is present at mid, return True
       if (arr[mid].value == x) {
         if (arr[mid].original) {
+          hit.found = true
           this.hits.push(hit);
           return true;
         }
         for (i = 0; i < arr.length; i++) {
           if (arr[i].value == x) {
-            this.hits.push(new hitTuple(0, i));
             if (arr[i].original) {
+              this.hits.push(new hitTuple(0,i,true))
               return true;
             }
+            this.hits.push(new hitTuple(0, i));
           }
         }
         return false;
