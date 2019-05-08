@@ -211,15 +211,17 @@ function Search() {
       // If element is present at mid, return True
       if (arr[mid].value == x) {
         if (arr[mid].original) {
+          hit.found = true
           this.hits.push(hit);
           return true;
         }
         for (i = 0; i < arr.length; i++) {
           if (arr[i].value == x) {
-            this.hits.push(new hitTuple(0, i));
             if (arr[i].original) {
+              this.hits.push(new hitTuple(0,i,true))
               return true;
             }
+            this.hits.push(new hitTuple(0, i));
           }
         }
         return false;
