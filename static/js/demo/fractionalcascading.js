@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
 });
 
 function FCNode(value, original = true, indexBelow = null) {
@@ -67,7 +68,7 @@ function Search() {
     if (result) {
       this.results.push(true);
     } else {
-      if (list[0].values[binSearchNode].value != x){
+      if (list[0].values[binSearchNode].value < x){
         binSearchNode = Math.min(binSearchNode+1, list[0].values.length-1)
       }
       this.results.push(false);
