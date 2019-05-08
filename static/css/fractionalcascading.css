@@ -36,3 +36,11 @@
 .animate {
   transform: scale(1.5);
 }
+
+p {
+  font-size: 1.1em;
+}
+
+#descriptionContainer {
+  padding-bottom: 3em;
+}

@@ -56,5 +56,37 @@
           </div>
           <!-- /.container-fluid -->
         </nav>
+
+      <!-- How It Works -->
+      <div class="container" id="descriptionContainer">
+        <h2>The Problem</h2>
+        <p>The simplest problem in which fractional cascading is used is as follows. The input is k ordered lists of numbers, each of size n as well as a query value x. The output for this problem is to return, for each list, True if the item appears in the list and False if it does not. </p>
+        <p>As an example, if the input is:</p>
+        <ul>
+          <li>L1: 1,4,6</li>
+          <li>L2: 2,6,7</li>
+          <li>L3: 3,4,7</li>
+        </ul>
+        <p>The output would be [True, True, False] since all but the last list contained the value 6.</p>
+        <br>
+        <h2>The Naïve Solution</h2>
+        <p>The simplest solution that comes to mind would be to perform a binary search for the query on each of the k lists. For relatively small k and for very few queries, this is optimal. However, there is no restriction on the number of queries that can be conducted nor the size of k. This approach is O(klogn) for each query making the total processing time O(qklogn) for q queries.</p>
+        <br>
+        <h2>Fractional Cascading</h2>
+        <p>Fractional cascading is a technique that aims to reduce the time it takes to perform each query by performing some preprocessing.</p>
+        <h3>Preprocessing</h3>
+        <p>The preprocessing begins with converting each list of numbers into arrays and organizing them by the list number. We will say that array 1 is “above” array 2 and array 2 is “below” array 1. In general, an Array j is above Array i if j < i.</p>
+        <p>Now, starting with the “lowest” list in the sequence and selecting every i-th element (i depends on the implementation but in this implementation, i=2) and inserting it into the array above it while still maintaining sorted order. Mark that element as “promoted” and keep a pointer from it to its original position in the bottom list. This operation of taking every i-th element and “promoting” it to the array above is called “cascading.”</p>
+        <p>The cascading for one array takes O(n) time since the elements can be promoted using a linear time walk through the arrays. With one more passthrough of the array with the promoted elements, we can have pointers from the original array elements to the next largest promoted element.</p>
+        <p>We can now take this array with the promoted elements and “cascade” it up to the array above that. The process once again takes O(n) for each of the k arrays since the size of the cascaded arrays tends towards 2n. Overall, the time to perform this preprocessing is O(nk).</p>
+        <h3>Searching (assuming i=2)</h3>
+        <p>To search for a query, we must perform a binary search on the top-level array. This takes O(logn) time and if the element is found and is not marked as promoted, then we know that it existed in the original array. If it was marked, we know that the element did not exist in the array. Now we go to the next promoted element in the list using the pointers that were created before. From there, we follow that promoted element’s pointer to its position in the array below. Generally, we only need to look at the current element’s value and its direct predecessor’s value.</p>
+        <p>If either of the values are equal to the query and are original, then the query exists in the original array. We do not need to check any other values since we promote every other element and our binary search brought us to the smallest element that is at least as large as the query. The other promoted value must be less than the query. If i is not equal to 2 then we need to look at the current element’s value as well as its i-1 direct predecessors. Among the values that were found, go to the value that is the smallest that is still larger than the query. From there we will restart the process of following the pointers to the array below until completion. Each of the pointer traversals take O(i) time, which assuming i is a constant, is O(1) time per array or O(k) time overall.</p>
+        <p>The total search time per query is O(k+logn) and O(q(k+logn)) for q queries.</p>
+        <h3>When to Use</h3>
+        <p>Due to the internal structure required, the preprocessing for fractional cascading requires O(nk) space and the total time from beginning to end is O(nk + q(k+logn)) as opposed to the O(1) space and O(qklogn) time required for the naïve approach.</p>
+        <p>When q ≥ O(√n), fractional cascading becomes more efficient than the naïve approach to the problem.</p>
+      </div>
+
   </body>
 </html>
