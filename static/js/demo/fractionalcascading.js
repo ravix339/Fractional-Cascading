@@ -145,7 +145,9 @@ function Search() {
     if (result) {
       this.results.push(true);
     } else {
-      binSearchNode = Math.min(binSearchNode+1, list[0].values.length)
+      if (list[0].values[binSearchNode].value != x){
+        binSearchNode = Math.min(binSearchNode+1, list[0].values.length)
+      }
       this.results.push(false);
     }
     var cursor = binSearchNode
