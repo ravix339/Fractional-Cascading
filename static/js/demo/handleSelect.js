@@ -14,7 +14,7 @@ loadSelectValues = () => {
     numListsSelectElement.append(option);
   }
   const numElementsSelectElement = $("#num-elements-select");
-  for (let num = 1; num <= 15; ++num) {
+  for (let num = 2; num <= 15; ++num) {
     let option = new Option(num, num);
     $(option).html(num);
     numElementsSelectElement.append(option);
@@ -51,7 +51,9 @@ createInputLists = (numberOfLists, numberOfElements) => {
         8}em"></div>`
     );
     const currentList = $(`#list-index-${listNum}`);
-    currentList.append(`<span class="list-label">List ${listNum + 1}: </span>`);
+    currentList.append(
+      `<span class="list-label">List ${numberOfLists - listNum}: </span>`
+    );
     for (let elementNum = 0; elementNum <= numberOfElements - 1; ++elementNum) {
       currentList.append(
         `<input type="number" class="list-element" id="list-${listNum}-element-${elementNum}">`

@@ -21,6 +21,7 @@ startSearch = searchNumber => {
   const { hits, results } = searchData;
   console.log(hits);
   console.log(results);
+  console.log(hits);
 
   //diable and start search button
   $("#startSearchButton").prop("disabled", true);
@@ -36,16 +37,22 @@ startSearch = searchNumber => {
   for (let i = 0; i < hits.length; ++i) {
     setTimeout(() => {
       const hit = hits[i];
-      let { list, index, color } = hit;
+      let { list, index, found } = hit;
       list = numLists - list - 1;
       $(`#fc-list-${list}-element-${index}`).addClass("animate");
       setTimeout(() => {
         $(`#fc-list-${list}-element-${index}`).removeClass("animate");
-        if (color !== "blue")
+        if (found)
           $(`#fc-list-${list}-element-${index}`).css(
             "background-color",
-            "yellow"
+            "rgba(250, 255, 130, 0.8)"
           );
+        else {
+          $(`#fc-list-${list}-element-${index}`).css(
+            "background-color",
+            "rgba(239, 204, 255, 0.5)"
+          );
+        }
       }, 1500);
     }, 1500 * i);
   }

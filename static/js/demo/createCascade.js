@@ -10,7 +10,7 @@ getLists = () => {
     }
     inputListOfLists.push(listData);
   }
-  return inputListOfLists;
+  return inputListOfLists.reverse();
 };
 
 createCascade = (listOfLists = null) => {

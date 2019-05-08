@@ -33,6 +33,7 @@ drawLines = linesToDraw => {
     newLine.setAttribute("x2", x2);
     newLine.setAttribute("y2", y2 - containerDivTop);
     newLine.setAttribute("stroke", color);
+    newLine.setAttribute("stroke-width", 1.5);
     $("svg").append(newLine);
   }
 };
