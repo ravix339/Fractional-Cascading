@@ -12,6 +12,8 @@ showSearchInputAndButtons = () => {
   $("#startSearchButton").show();
   $("#resetButton").show();
   $("#newRandomListBtn").show();
+  $("#animationSpeed").show();
+  $("#animationSpeedLabel").show();
 };
 
 hideSearchInputAndButtons = () => {
@@ -19,4 +21,6 @@ hideSearchInputAndButtons = () => {
   $("#startSearchButton").hide();
   $("#resetButton").hide();
   $("#newRandomListBtn").hide();
+  $("#animationSpeed").hide();
+  $("#animationSpeedLabel").hide();
 };

@@ -93,7 +93,10 @@
     <!-- Search Elements and Reset-->
     <div class="container" id="search-container">
         <div class="row">
-          <div class="col-xs-3"></div>
+          <div class="col-xs-3">
+            <label style="display:none" for="animationSpeed" id="animationSpeedLabel">Speed</label>
+            <input style="display:none" type="range" class="custom-range" id="animationSpeed" min="100" max="2000" step="100" value="1050">
+          </div>
           <div class="col-xs-4">
             <div class="input-group mb-3" id="searchNumDiv">
               <input id="searchNumber" type="number" class="form-control" style="display: none" placeholder="Enter Search Number" aria-label="Username" aria-describedby="basic-addon1">
